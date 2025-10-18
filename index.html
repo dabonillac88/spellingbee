@@ -1,1 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Spelling Bee Tournament - Santa Juana School</title>
+    <link rel="stylesheet" href="styleSpell.css">
+    <!-- PDF Export Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.8.2/jspdf.plugin.autotable.min.js"></script>
+</head>
+<body>
 
+    <div class="container">
+        <header>
+            <img src="escudo.png" alt="Santa Juana School Logo" class="school-logo">
+            <h1>Spelling Bee Tournament</h1>
+            <h2>Santa Juana School</h2>
+        </header>
+
+        <!-- Screen 1: Tournament Setup -->
+        <div id="setup-screen">
+            <h3>Tournament Setup</h3>
+            <div class="setup-section">
+                <label for="level-select">1. Select the Tournament Level:</label>
+                <select id="level-select">
+                    <option value="" disabled selected>-- Choose a level --</option>
+                    <option value="4-5">Grades 4-5</option>
+                    <option value="6-7">Grades 6-7</option>
+                    <option value="8-9">Grades 8-9</option>
+                    <option value="10-11">Grades 10-11</option>
+                </select>
+            </div>
+            <div id="participant-registration" class="setup-section hidden">
+                <label for="participant-name">2. Register Participants:</label>
+                <div class="input-area">
+                    <input type="text" id="participant-name" placeholder="Student's name...">
+                    <button id="add-participant-btn">Add</button>
+                </div>
+                <h4>Registered List:</h4>
+                <ul id="participants-list">
+                    <!-- Participants will be added here -->
+                </ul>
+                <button id="start-tournament-btn" class="start-btn" disabled>Start Tournament</button>
+            </div>
+        </div>
+
+        <!-- Screen 2: Tournament in Progress -->
+        <main id="tournament-screen" class="hidden">
+            <div class="stats">
+                <p>Round: <strong id="current-round">1</strong></p>
+                <p>Players Left: <strong id="players-left">0</strong></p>
+            </div>
+            <h3 id="player-turn">Turn of: </h3>
+            
+            <div class="word-container">
+                <p>Category: <strong id="word-category"></strong></p>
+                <h2 id="word-to-spell">Word</h2>
+                <button id="speak-btn">🔊 Listen to word</button>
+            </div>
+
+            <div class="input-area">
+                <input type="text" id="spell-input" placeholder="Type the word here..." autocomplete="off">
+                <button id="submit-btn">Check</button>
+            </div>
+            <div id="feedback" class="feedback-message"></div>
+            <button id="next-turn-btn" class="hidden">Next Turn</button>
+        </main>
+        
+        <!-- Screen 3: Round Summary -->
+        <section id="round-summary-screen" class="hidden">
+            <h3 id="summary-round-title">End of Round 1</h3>
+            <div class="summary-columns">
+                <div class="summary-column">
+                    <h4>✅ Qualified</h4>
+                    <ul id="winners-list"></ul>
+                </div>
+                <div class="summary-column">
+                    <h4>❌ Eliminated</h4>
+                    <ul id="eliminated-list"></ul>
+                </div>
+            </div>
+            <button id="next-round-btn">Start Next Round</button>
+        </section>
+
+        <!-- Screen 4: Tournament End -->
+        <section id="game-over-screen" class="hidden">
+            <h3>The Tournament has Ended!</h3>
+            <div class="winner-declaration">
+                <p>🏆 WINNER 🏆</p>
+                <h2 id="winner-name"></h2>
+            </div>
+            <h4>Final Leaderboard</h4>
+            <table id="final-leaderboard-table" class="leaderboard-table">
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Student</th>
+                        <th>Elimination Round</th>
+                    </tr>
+                </thead>
+                <tbody id="final-leaderboard-body"></tbody>
+            </table>
+            <div class="end-game-buttons">
+                <button id="new-tournament-btn">Start a New Tournament</button>
+                <button id="export-pdf-btn">Export to PDF</button>
+            </div>
+        </section>
+
+    </div>
+
+    <script src="script.js"></script>
+
+    <footer>
+        Developed by: Robotecno Team, Technology and IT Area 2025
+    </footer>
+</body>
+</html>
