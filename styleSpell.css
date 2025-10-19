@@ -1,1 +1,154 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
+:root {
+    --primary-red: #8B0000;
+    --secondary-green: #228B22;
+    --secondary-blue: #0d6efd;
+    --light-grey: #f0f4f8;
+    --dark-text: #333;
+    --white: #ffffff;
+    --grey-border: #ccc;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--light-grey);
+    color: var(--dark-text);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    padding: 1rem;
+}
+
+.container {
+    background-color: var(--white);
+    padding: 2rem 3rem;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    width: 90%;
+    max-width: 700px;
+    text-align: center;
+}
+
+header { text-align: center; }
+.school-logo { max-width: 100px; margin-bottom: 1rem; }
+header h1 { color: var(--primary-red); margin-bottom: 0.5rem; }
+
+/* --- Setup Screen --- */
+.setup-section { margin: 1.5rem 0; text-align: left; }
+.setup-section label { font-weight: 600; display: block; margin-bottom: 0.5rem; }
+select, input[type="text"] {
+    width: 100%;
+    padding: 12px;
+    font-size: 1rem;
+    border: 2px solid var(--grey-border);
+    border-radius: 8px;
+    box-sizing: border-box;
+}
+#participants-list {
+    list-style: none;
+    padding: 0;
+    margin-top: 1rem;
+    min-height: 50px;
+    border: 1px dashed var(--grey-border);
+    border-radius: 8px;
+    padding: 0.5rem;
+}
+#participants-list li {
+    background-color: #f8f9fa;
+    padding: 8px 12px;
+    border-radius: 5px;
+    margin-bottom: 5px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.remove-participant-btn {
+    background: #dc3545;
+    color: white;
+    border: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+    line-height: 20px;
+    text-align: center;
+}
+.start-btn {
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    background-color: var(--secondary-green);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+.start-btn:disabled { background-color: #a5d6a7; cursor: not-allowed; }
+.start-btn:not(:disabled):hover { background-color: #1a6f1a; }
+
+/* --- Tournament Screen --- */
+.stats { display: flex; justify-content: space-around; font-size: 1.1rem; border-bottom: 2px solid #eee; padding-bottom: 1rem; margin-bottom: 1rem; }
+#player-turn { margin: 1.5rem 0; font-size: 1.5rem; color: var(--primary-red); }
+.word-container { margin: 1rem 0; }
+#word-category { background-color: #e8f5e9; color: var(--secondary-green); padding: 5px 15px; border-radius: 20px; font-size: 0.9rem; }
+#word-to-spell { font-size: 2.5rem; margin: 0.5rem 0; letter-spacing: 2px; color: transparent; text-shadow: 0 0 0px rgba(0,0,0,0.6); }
+#speak-btn { background: none; border: none; font-size: 2.5rem; cursor: pointer; color: var(--primary-red); }
+.input-area { display: flex; gap: 10px; margin: 1.5rem 0; }
+.input-area button { background-color: var(--secondary-green); color: white; border: none; padding: 0 25px; border-radius: 8px; cursor: pointer; }
+
+/* --- Buttons & Feedback --- */
+.feedback-message { min-height: 2rem; font-size: 1.2rem; font-weight: 600; margin-top: 1rem; padding: 10px; border-radius: 8px; }
+.correct { color: #155724; background-color: #d4edda; }
+.incorrect { color: #721c24; background-color: #f8d7da; }
+#next-turn-btn, #next-round-btn, #new-tournament-btn, #export-pdf-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-top: 1rem;
+    transition: background-color 0.3s;
+}
+#next-turn-btn, #next-round-btn { background-color: var(--primary-red); }
+#next-turn-btn:hover, #next-round-btn:hover { background-color: #6a0000; }
+
+/* --- Summary & End Screens --- */
+.summary-columns { display: flex; gap: 2rem; text-align: left; }
+.summary-column { flex: 1; }
+.summary-column h4 { border-bottom: 2px solid; padding-bottom: 0.5rem; }
+.summary-column h4:first-of-type { border-color: var(--secondary-green); }
+.summary-column h4:last-of-type { border-color: var(--primary-red); }
+.summary-column ul { list-style-type: none; padding: 0; }
+.summary-column li { padding: 5px 0; }
+.winner-declaration { background-color: #fff3e0; padding: 1rem; border-radius: 8px; margin: 2rem 0; }
+.winner-declaration p { margin: 0; font-size: 1.2rem; }
+.winner-declaration h2 { margin: 0; font-size: 2.5rem; color: var(--primary-red); }
+.leaderboard-table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+.leaderboard-table th, .leaderboard-table td { padding: 12px 15px; border: 1px solid #ddd; text-align: left; }
+.leaderboard-table th { background-color: var(--primary-red); color: white; font-weight: 600; }
+
+.end-game-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+#new-tournament-btn { margin-top: 0; background-color: var(--secondary-green); }
+#new-tournament-btn:hover { background-color: #1a6f1a; }
+#export-pdf-btn { margin-top: 0; background-color: var(--secondary-blue); }
+#export-pdf-btn:hover { background-color: #0b5ed7; }
+
+
+/* --- Utility Classes --- */
+.hidden { display: none; }
+footer { width: 100%; text-align: center; padding: 1rem 0; margin-top: 1rem; color: #6c757d; font-size: 0.9rem; }
